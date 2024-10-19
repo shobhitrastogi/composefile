@@ -1,0 +1,17 @@
+version: '3'
+services:
+  backend:
+    image: shobhitrastogi/backend:latest  # Backend Docker image from Docker Hub
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+    restart: always  # Optional: Restarts the container if it crashes
+
+  frontend:
+    image: shobhitrastogi/inotebook:latest  # Frontend Docker image from Docker Hub
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always  # Optional: Restarts the container if it crashes
